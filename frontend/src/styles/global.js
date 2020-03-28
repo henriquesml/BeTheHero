@@ -44,6 +44,17 @@ export default createGlobalStyle`
     padding: 0 24px;
   }
 
+  form textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 140px;
+    color: #333;
+    border: 1px solid #dcdce6;
+    border-radius: 8px;
+    padding: 16px 24px;
+    line-height: 24px;
+  }
+
   .button {
     width: 100%;
     height: 60px;
@@ -62,5 +73,24 @@ export default createGlobalStyle`
 
   .button:hover {
     filter: brightness(90%)
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    color: #41414d;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.2s;
+
+    :hover{
+      opacity: 0.8;
+    }
+
+    svg {
+      margin-right: 8px;
+    }
   }
 `;
