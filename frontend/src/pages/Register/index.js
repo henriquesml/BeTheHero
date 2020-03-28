@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { FiArrowLeft } from 'react-icons/fi'
 
 import api from '../../services/api'
@@ -28,10 +29,10 @@ export default function Login() {
       city,
       uf
     }).then(function(success){
-      console.log(success.status)
+      toast.success('Conta criada com sucesso!')
       history.push('/')
     }).catch(function(err){
-      console.log(err.response.data.error)
+      toast.error(err.response.data.error)
     })
   }
 

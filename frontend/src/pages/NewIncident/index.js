@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { FiArrowLeft } from 'react-icons/fi'
 
 import api from '../../services/api'
@@ -32,10 +33,10 @@ export default function NewIncident() {
         Authorization: ongId,
       }
     }).then(function(success){
-      
+      toast.success('Caso cadastrado com sucesso!')
       history.push('/profile')
     }).catch(function(err){
-      console.log(err.response.data.error)
+      toast.error(err.response.data.error)
     })
   }
 

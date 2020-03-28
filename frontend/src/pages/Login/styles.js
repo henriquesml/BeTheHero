@@ -24,4 +24,8 @@ export const SectionForm = styled.section`
     margin-bottom: 32px;
     color: #333;
   }
+
+  input + input {
+    margin-top: 10px;
+  }
 `;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { FiLogIn } from 'react-icons/fi'
 
 import api from '../../services/api'
@@ -11,7 +12,8 @@ import heroesImg from '../../assets/heroes.png'
 
 export default function Login() {
 
-  const [id, setId] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const history = useHistory()
 
@@ -19,14 +21,14 @@ export default function Login() {
     e.preventDefault()
 
     await api.post('/sessions', {
-      id
+      email,
+      password
     }).then(function(success){
-      console.log(success.data.name)
-      localStorage.setItem('ongId', id)
+      localStorage.setItem('ongId', success.data.id)
       localStorage.setItem('ongName', success.data.name)
       history.push('/profile')
     }).catch(function(err){
-      console.log(err.response.data.error)
+      toast.error(err.response.data.error)
     })
   }
 
@@ -39,9 +41,16 @@ export default function Login() {
           <h1>Faça seu Login</h1>
 
           <input
-            value={id}
-            onChange={e => setId(e.target.value)}
-            placeholder='ID da sua ONG'
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder='E-mail da sua ONG'
+          />
+
+          <input
+            value={password}
+            type='password'
+            onChange={e => setPassword(e.target.value)}
+            placeholder='Senha da sua ONG'
           />
           <button className='button' type='submit' >Entrar</button>
 

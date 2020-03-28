@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { FiPower, FiTrash2 } from 'react-icons/fi'
 
 import api from '../../services/api'
@@ -25,7 +26,7 @@ export default function Profile() {
       }).then(function(success){
         setIncidents(success.data)
       }).catch(function(err){
-        console.log(err.response.data.error)
+        toast.error(err.response.data.error)
       })
     }
 
@@ -39,8 +40,9 @@ export default function Profile() {
       }
     }).then(function(success){
       setIncidents(incidents.filter(incident => incident.id !== id))
+      toast.success('Caso deletado com sucesso.')
     }).catch(function(err){
-      console.log(err.response.data.error)
+      toast.error(err.response.data.error)
     })
   }
 
@@ -84,6 +86,6 @@ export default function Profile() {
           </li>
         ))}
       </ul>
-    </Container>
+    </Container>    
   );
 }
