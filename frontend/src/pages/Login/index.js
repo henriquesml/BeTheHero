@@ -26,6 +26,7 @@ export default function Login() {
     }).then(function(success){
       localStorage.setItem('ongId', success.data.id)
       localStorage.setItem('ongName', success.data.name)
+      localStorage.setItem('theme', 'light')
       history.push('/profile')
     }).catch(function(err){
       toast.error(err.response.data.error)

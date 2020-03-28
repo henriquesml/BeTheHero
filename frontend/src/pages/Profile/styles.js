@@ -6,9 +6,18 @@ export const Container = styled.div`
   padding: 0 30px;
   margin: 32px auto;
 
+  div {
+    margin-left: auto;
+  }
+
   h1 {
     margin-top: 80px;
     margin-bottom: 24px;
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  .button{
+    margin-left: 16px;
   }
 
   ul {
@@ -18,7 +27,7 @@ export const Container = styled.div`
     list-style: none;
 
     li {
-      background: #FFF;
+      background: ${({ theme }) => theme.colors.primary};
       padding: 24px;
       border-radius: 8px;
       position: relative;
@@ -42,7 +51,7 @@ export const Container = styled.div`
       strong {
         display: block;
         margin-bottom: 16px;
-        color: #41414d;
+        color:${({ theme }) => theme.colors.textSecondary};
       }
 
       p + strong {
@@ -50,7 +59,7 @@ export const Container = styled.div`
       }
 
       p {
-        color: #737380;
+        color: ${({ theme }) => theme.colors.textP};
         line-height: 21px;
         font-size: 16px;
       }
@@ -65,6 +74,7 @@ export const Header = styled.header`
   span {
     font-size: 20px;
     margin-left: 24px;
+    color: ${({ theme }) => theme.colors.text};
   }
 
   img {
@@ -81,13 +91,14 @@ export const Header = styled.header`
     height: 60px;
     width: 60px;
     border-radius: 6px;
-    border: 1px solid #dcdce6;
+    border: ${({ theme }) => theme.title === 'dark' ? '1px solid #444' : '1px solid #dcdce6'};
     background: transparent;
     margin-left: 16px;
     transition: border-color 0.2s;
+    background: ${({ theme }) => theme.title === 'dark' ? '#333 !important' : 'none'};
 
     :hover {
-      border-color: #999;
+      border-color: ${({ theme }) => theme.title === 'dark' ? '#555' : '#999'};
     }
   }
 `;
