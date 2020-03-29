@@ -13,7 +13,6 @@ export const Container = styled.div`
 export const Content = styled.div`
   width: 100%;
   padding: 96px;
-  background: #f0f0f5;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
 
   display: flex;
@@ -28,13 +27,17 @@ export const Content = styled.div`
       margin: 64px 0 32px;
       font-size: 32px;
       margin-bottom: 32px;
-      color: #333;
+      color: ${({ theme }) => theme.colors.text};
     }
 
     p {
       font-size: 18px;
-      color: #737380;
+      color: ${({ theme }) => theme.colors.textSecondary};
       line-height: 32px;
+    }
+
+    a {
+      color: ${({ theme }) => theme.colors.text};
     }
   
   }

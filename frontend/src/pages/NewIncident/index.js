@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FiArrowLeft } from 'react-icons/fi'
+import { useSelector } from 'react-redux'
 
 import api from '../../services/api'
 
@@ -9,9 +10,12 @@ import { Container, Content } from './styles';
 
 import logoImg from '../../assets/logo.svg'
 
+import themes from '../../styles/themes';
+
 export default function NewIncident() {
 
   const ongId = localStorage.getItem('ongId')
+  const theme = useSelector(state => state.theme.theme)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')

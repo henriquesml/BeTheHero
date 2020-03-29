@@ -5,6 +5,7 @@ export const Container = styled.div`
   max-width: 1180px;
   padding: 0 30px;
   margin: 32px auto;
+  background: ${({ theme }) => theme.colors.background};
 
   div {
     margin-left: auto;

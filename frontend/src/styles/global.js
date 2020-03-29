@@ -16,7 +16,6 @@ export default createGlobalStyle`
   }
   html, body, #root{
     font: 400 18px 'Roboto', sans-serif;
-    height:100%;
     background: ${props => props.theme.colors.background};
   }
   body{

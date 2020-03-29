@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { ThemeProvider } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux'
 import Switch from 'react-switch';
 import { shade } from 'polished';
@@ -68,7 +67,6 @@ export default function Profile() {
   }
 
   return (
-    <ThemeProvider theme={themes[theme]}>
     <Container>
       <Header>
         <img src={logoImg} alt='Be The Hero' />
@@ -117,6 +115,5 @@ export default function Profile() {
         ))}
       </ul>
     </Container>
-    </ThemeProvider>
   );
 }

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { FiLogIn } from 'react-icons/fi'
-
-import api from '../../services/api'
 
 import { Container, SectionForm } from './styles';
 
@@ -19,7 +17,6 @@ export default function Login() {
   const dispatch = useDispatch()
 
   async function handleLogin(e){
-    console.log('form: ', email, password)
     e.preventDefault()
     dispatch(OrgRequest(email, password))
   }

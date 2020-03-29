@@ -1,12 +1,14 @@
 import React from 'react';
-import Routes from './routes'
 import { ToastContainer } from 'react-toastify'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
+import { Router } from 'react-router-dom'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
-import { store, persistor } from './store'
+import Routes from './Routes'
 
+import { store, persistor } from './store'
+import history from './services/history'
 import Styles from './styles'
 
 function App() {
@@ -14,11 +16,13 @@ function App() {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <PerfectScrollbar>
-          <Styles />
-          <ToastContainer autoClose={3000} />
-          <Routes />
-        </PerfectScrollbar>
+        <Router history={history}>
+          <PerfectScrollbar>
+            <Routes />
+            <Styles />
+            <ToastContainer autoClose={3000} />
+          </PerfectScrollbar>
+        </Router>
       </PersistGate>
     </Provider>
   );
