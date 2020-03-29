@@ -6,7 +6,7 @@ export default (reducers) => {
     {
       key: 'bethehero',
       storage,
-      whitelist: ['theme']
+      whitelist: ['theme', 'org']
     },
     reducers
   )

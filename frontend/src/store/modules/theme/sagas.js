@@ -13,7 +13,5 @@ export function* theme({ payload }){
 }
 
 export default all([
-  takeLatest('@theme/THEME_REQUEST', theme),
-  takeLatest('@theme/THEME_LIGHT', themeLight),
-  takeLatest('@theme/THEME_DARK', themeDark)
+  takeLatest('@theme/THEME_REQUEST', theme)
 ])

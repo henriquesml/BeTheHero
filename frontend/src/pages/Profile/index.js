@@ -16,22 +16,21 @@ import { Container, Header } from './styles';
 import logoImg from '../../assets/logo.svg'
 
 import { themeRequest } from '../../store/modules/theme/actions'
+import { OrgSignOut } from '../../store/modules/org/actions'
 
 export default function Profile() {
 
   const dispatch = useDispatch()
-  const ongId = localStorage.getItem('ongId')
-  const ongName = localStorage.getItem('ongName')
   const theme = useSelector(state => state.theme.theme)
+  const {id, name} = useSelector(state => state.org)
   
   const [incidents, setIncidents] = useState([])
 
-  const history = useHistory()
   useEffect(() => {
     async function handleOngs() {
       await api.get('/profile', {
         headers: {
-          Authorization: ongId
+          Authorization: id
         }
       }).then(function(success){
         setIncidents(success.data)
@@ -41,12 +40,12 @@ export default function Profile() {
     }
 
     handleOngs()
-  }, [ongId])
+  }, [id])
 
   async function handleDelete(id) {
     await api.delete(`/incidents/${id}`, {
       headers: {
-        Authorization: ongId
+        Authorization: id
       }
     }).then(function(success){
       setIncidents(incidents.filter(incident => incident.id !== id))
@@ -57,8 +56,7 @@ export default function Profile() {
   }
 
   function handleLogout() {
-    localStorage.clear()
-    history.push('/')
+    dispatch(OrgSignOut())
   }
 
   const toggleTheme = () => {
@@ -74,7 +72,7 @@ export default function Profile() {
     <Container>
       <Header>
         <img src={logoImg} alt='Be The Hero' />
-        <span>Bem vinda, {ongName}</span>
+        <span>Bem vinda, {name}</span>
 
         <Switch
           onChange={toggleTheme}

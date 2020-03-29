@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { FiLogIn } from 'react-icons/fi'
 
 import api from '../../services/api'
@@ -10,27 +10,18 @@ import { Container, SectionForm } from './styles';
 import logoImg from '../../assets/logo.svg'
 import heroesImg from '../../assets/heroes.png'
 
+import { OrgRequest } from '../../store/modules/org/actions'
+
 export default function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  const history = useHistory()
+  const dispatch = useDispatch()
 
   async function handleLogin(e){
+    console.log('form: ', email, password)
     e.preventDefault()
-
-    await api.post('/sessions', {
-      email,
-      password
-    }).then(function(success){
-      localStorage.setItem('ongId', success.data.id)
-      localStorage.setItem('ongName', success.data.name)
-      localStorage.setItem('theme', 'light')
-      history.push('/profile')
-    }).catch(function(err){
-      toast.error(err.response.data.error)
-    })
+    dispatch(OrgRequest(email, password))
   }
 
   return (
