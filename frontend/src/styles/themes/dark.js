@@ -6,6 +6,7 @@ export default {
       background: '#222',
       text: '#FFF',
       textSecondary: '#DDD',
-      textP: '#ccc'
+      textP: '#ccc',
+      modal: '#333'
     },
   };

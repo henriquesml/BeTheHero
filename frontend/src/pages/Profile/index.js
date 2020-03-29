@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { useDispatch, useSelector } from 'react-redux'
 import Switch from 'react-switch';
 import { shade } from 'polished';
-import { FiPower, FiTrash2 } from 'react-icons/fi'
+import { FiPower, FiTrash2, FiSun, FiMoon } from 'react-icons/fi'
 
 import api from '../../services/api'
 
@@ -75,11 +75,37 @@ export default function Profile() {
         <Switch
           onChange={toggleTheme}
           checked={themes[theme].title === 'dark'}
-          checkedIcon={false}
-          uncheckedIcon={false}
-          height={10}
-          width={40}
-          handleDiameter={20}
+          checkedIcon={
+            <div style={{
+              display: 'flex',
+              width: '100%',
+              height: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginLeft: '2px',
+              position: 'relative',
+              zIndex: '1'}}>
+              <FiSun size={19} color='#FFF000'/>
+            </div>
+          }
+          uncheckedIcon={
+            <div style={{
+              display: 'flex',
+              width: '100%',
+              height: '100%',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginLeft: '-23px',
+              position: 'relative',
+              zIndex: '1'}}>
+              <FiMoon size={18} color='#FFF'/>
+            </div>
+          }
+          height={20}
+          width={45}
+          handleDiameter={25}
+          onHandleColor='#555'
+          offHandleColor='#aaa'
           offColor={shade(0.15, themes[theme].colors.primary)}
           onColor={themes[theme].colors.primary}
           

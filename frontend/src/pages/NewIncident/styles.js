@@ -14,7 +14,7 @@ export const Content = styled.div`
   width: 100%;
   padding: 96px;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
-
+  background: ${({ theme }) => theme.colors.modal};
   display: flex;
   align-items: center;
   justify-content: space-between;
