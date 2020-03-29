@@ -12,7 +12,7 @@ export default function RouteWrapper({
   isUndefined,
   ...rest
 }) {
-  const { signed } = store.getState().org
+  const { signed } = store.getState().ong
 
   if (!signed && ( isPrivate || isUndefined )) {
     return <Redirect to="/" />

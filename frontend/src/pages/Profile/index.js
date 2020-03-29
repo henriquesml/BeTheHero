@@ -15,13 +15,13 @@ import { Container, Header } from './styles';
 import logoImg from '../../assets/logo.svg'
 
 import { themeRequest } from '../../store/modules/theme/actions'
-import { OrgSignOut } from '../../store/modules/org/actions'
+import { OngSignOut } from '../../store/modules/ong/actions'
 
 export default function Profile() {
 
   const dispatch = useDispatch()
   const theme = useSelector(state => state.theme.theme)
-  const {id, name} = useSelector(state => state.org)
+  const {id, name} = useSelector(state => state.ong)
   
   const [incidents, setIncidents] = useState([])
 
@@ -55,7 +55,7 @@ export default function Profile() {
   }
 
   function handleLogout() {
-    dispatch(OrgSignOut())
+    dispatch(OngSignOut())
   }
 
   const toggleTheme = () => {

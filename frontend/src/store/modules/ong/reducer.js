@@ -7,26 +7,26 @@ const INITIAL_STATE = {
   loading: true
 }
 
-export default function org(state = INITIAL_STATE, action){
+export default function ong(state = INITIAL_STATE, action){
   return produce(state, draft => {
     switch(action.type){
-      case '@org/ORG_REQUEST': {
+      case '@ong/ONG_REQUEST': {
         draft.loading = true
         break
       }
-      case '@org/ORG_SUCCESS': {
+      case '@ong/ONG_SUCCESS': {
           draft.id = action.payload.id
           draft.name = action.payload.name
           draft.signed = true
           draft.loading = false
           break
         }
-        case '@org/ORG_FAIL': {
+        case '@ong/ONG_FAIL': {
           draft.loading = false
           break
         }
 
-      case '@org/ORG_SIGN_OUT': {
+      case '@ong/ONG_SIGN_OUT': {
           draft.id = null
           draft.name = null
           draft.signed = false

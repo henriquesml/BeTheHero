@@ -8,7 +8,7 @@ import { Container, SectionForm } from './styles';
 import logoImg from '../../assets/logo.svg'
 import heroesImg from '../../assets/heroes.png'
 
-import { OrgRequest } from '../../store/modules/org/actions'
+import { OngRequest } from '../../store/modules/ong/actions'
 
 export default function Login() {
 
@@ -18,7 +18,7 @@ export default function Login() {
 
   async function handleLogin(e){
     e.preventDefault()
-    dispatch(OrgRequest(email, password))
+    dispatch(OngRequest(email, password))
   }
 
   return (
