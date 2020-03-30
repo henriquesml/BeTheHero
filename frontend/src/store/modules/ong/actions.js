@@ -12,6 +12,13 @@ export function OngSuccess(id, name) {
   }
 }
 
+export function OngRegister(name, email, password, whatsapp, city, uf) {
+  return {
+    type: '@ong/ONG_REGISTER',
+    payload: { name, email, password, whatsapp, city, uf }
+  }
+}
+
 export function OngFail() {
   return {
     type: '@ong/ONG_FAIL'

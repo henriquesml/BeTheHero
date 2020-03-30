@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
 import { FiArrowLeft } from 'react-icons/fi'
 
 import api from '../../services/api'
@@ -11,7 +12,7 @@ import logoImg from '../../assets/logo.svg'
 
 export default function NewIncident() {
 
-  const ongId = localStorage.getItem('ongId')
+  const { id}  = useSelector(state => state.ong)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
@@ -30,7 +31,7 @@ export default function NewIncident() {
 
     await api.post('/incidents', data, {
       headers: {
-        Authorization: ongId,
+        Authorization: id,
       }
     }).then(function(success){
       toast.success('Caso cadastrado com sucesso!')

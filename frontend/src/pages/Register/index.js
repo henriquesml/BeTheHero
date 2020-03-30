@@ -1,39 +1,27 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { FiArrowLeft } from 'react-icons/fi'
-
-import api from '../../services/api'
 
 import { Container, Content } from './styles';
 
 import logoImg from '../../assets/logo.svg'
 
+import { OngRegister } from '../../store/modules/ong/actions'
+
 export default function Login() {
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [whatsapp, setWhatsapp] = useState('')
   const [city, setCity] = useState('')
   const [uf, setUf] = useState('')
-
-  const history = useHistory()
+  const dispatch = useDispatch()
 
   async function handleRegister(e) {
     e.preventDefault()
-
-    await api.post('/ongs', {
-      name,
-      email,
-      whatsapp,
-      city,
-      uf
-    }).then(function(success){
-      toast.success('Conta criada com sucesso!')
-      history.push('/')
-    }).catch(function(err){
-      toast.error(err.response.data.error)
-    })
+    dispatch(OngRegister(name, email, password, whatsapp, city, uf))
   }
 
   return (
@@ -61,6 +49,12 @@ export default function Login() {
             onChange={e => setEmail(e.target.value)}
             type='email'
             placeholder='E-mail'
+          />
+          <input
+            value={password}
+            type='password'
+            onChange={e => setPassword(e.target.value)}
+            placeholder='Senha'
           />
           <input
             value={whatsapp}

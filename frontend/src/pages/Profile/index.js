@@ -41,13 +41,13 @@ export default function Profile() {
     handleOngs()
   }, [id])
 
-  async function handleDelete(id) {
-    await api.delete(`/incidents/${id}`, {
+  async function handleDelete(incidentId) {
+    await api.delete(`/incidents/${incidentId}`, {
       headers: {
         Authorization: id
       }
     }).then(function(success){
-      setIncidents(incidents.filter(incident => incident.id !== id))
+      setIncidents(incidents.filter(incident => incident.id !== incidentId))
       toast.success('Caso deletado com sucesso.')
     }).catch(function(err){
       toast.error(err.response.data.error)
@@ -85,7 +85,7 @@ export default function Profile() {
               marginLeft: '2px',
               position: 'relative',
               zIndex: '1'}}>
-              <FiSun size={19} color='#FFF000'/>
+              <FiMoon size={19} color='#FFF'/>
             </div>
           }
           uncheckedIcon={
@@ -95,17 +95,17 @@ export default function Profile() {
               height: '100%',
               alignItems: 'center',
               justifyContent: 'center',
-              marginLeft: '-23px',
+              marginLeft: '-24px',
               position: 'relative',
               zIndex: '1'}}>
-              <FiMoon size={18} color='#FFF'/>
+              <FiSun size={18} color='#FFF000'/>
             </div>
           }
           height={20}
           width={45}
           handleDiameter={25}
           onHandleColor='#555'
-          offHandleColor='#aaa'
+          offHandleColor='#bbb'
           offColor={shade(0.15, themes[theme].colors.primary)}
           onColor={themes[theme].colors.primary}
           

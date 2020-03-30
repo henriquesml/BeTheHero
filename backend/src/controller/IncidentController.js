@@ -1,3 +1,4 @@
+const Yup = require('yup')
 const connection = require('../database/connections')
 
 module.exports = {
@@ -25,6 +26,16 @@ module.exports = {
   },
 
   async create(req, res) {
+    const schema = Yup.object().shape({
+      title: Yup.string().required(),
+      description: Yup.string().required(),
+      value: Yup.number().required()
+    })
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json( { error: 'Campos obrigatórios não foram preenchidos corretamente.' } )
+    }
+
     const { title, description, value } = req.body
     const ong_id = req.headers.authorization
 
